@@ -24,11 +24,6 @@ namespace _4App
 
         private void button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < Convert.ToInt32(textBox1.Text); i++)
-            {
-                Slave r2d2 = new Slave();
-                r2d2.Start();
-            }
             gijuKiekis = Convert.ToInt32(textBox1.Text);
         }
 
@@ -44,6 +39,18 @@ namespace _4App
                 string filename = Directory.GetFiles(textBox2.Text).First();
                 files = Directory.GetFiles(textBox2.Text);
                 MessageBox.Show(Convert.ToString(files.Length));
+            }
+            int a = 0;
+            for (int i = 1; i < Convert.ToInt32(textBox1.Text)+1; i++)
+            {
+                Slave r2d2 = new Slave();
+                for (int b = 0; b < 10*i; b++)
+                {
+                    b = a;
+                    r2d2.Files.Add(files[b]);
+                    r2d2.Start();
+                    a++;
+                }
             }
         }
     }
