@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace _4App
 {
     public partial class Form1 : Form
     {
+        private string[] files;
+
         public Form1()
         {
             InitializeComponent();
@@ -23,6 +26,21 @@ namespace _4App
             {
                 Slave r2d2 = new Slave();
                 r2d2.Start();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folder = new FolderBrowserDialog();
+            folder.ShowNewFolderButton = true;
+            DialogResult result = folder.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                textBox2.Text = folder.SelectedPath;
+                Environment.SpecialFolder root = folder.RootFolder;
+                string filename = Directory.GetFiles(textBox2.Text).First();
+                files = Directory.GetFiles(textBox2.Text);
+                MessageBox.Show(Convert.ToString(files.Length));
             }
         }
     }
