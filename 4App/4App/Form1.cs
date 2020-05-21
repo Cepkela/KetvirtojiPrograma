@@ -16,5 +16,14 @@ namespace _4App
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Convert.ToInt32(textBox1.Text); i++)
+            {
+                Slave r2d2 = new Slave();
+                r2d2.Start();
+            }
+        }
     }
 }
