@@ -14,10 +14,12 @@ namespace _4App
     public partial class Form1 : Form
     {
         private string[] files;
-
+        public int gijuKiekis;
         public Form1()
         {
             InitializeComponent();
+            Form2 frm2 = new Form2();
+            frm2.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -27,6 +29,7 @@ namespace _4App
                 Slave r2d2 = new Slave();
                 r2d2.Start();
             }
+            gijuKiekis = Convert.ToInt32(textBox1.Text);
         }
 
         private void button2_Click(object sender, EventArgs e)
